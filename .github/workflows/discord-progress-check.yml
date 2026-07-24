@@ -67,7 +67,10 @@ jobs:
           act5=$(recent "$(echo "$issue5" | jq -r '.updated_at // ""')" "$c5")
           actpr=$(recent "$(echo "$pr6" | jq -r '.updated_at // ""')" "$c6")
 
-          extra=$(echo "$allitems" | jq -r '[.[] | select(.number < 3 or .number > 6)] | if length > 0 then (map("- #\(.number) \(.title) (\(.state))") | join("\n")) else "" end')
+          extra=$(echo "$allitems" | jq -r --argjson now "$now_epoch" --argjson window "$window_sec" '
+            [.[] | select(.number < 3 or .number > 6) | select(($now - (.updated_at | fromdateiso8601)) <= $window)]
+            | if length > 0 then (map("- #\(.number) \(.title) (\(.state))") | join("\n")) else "" end
+          ')
 
           milestone="[일정상 정상]"
           if [[ "$kst_date" > "2026-07-27" ]]; then
@@ -85,8 +88,10 @@ jobs:
           fi
 
           if [ "$has_news" = "true" ]; then
-            planning_body=$(printf '[진행체크] 21세기 집현전 (%s KST)\n\n%s\n%s\n%s\n%s\n\n마일스톤: %s\n%s' \
-              "$kst_date" "$i3" "$i4" "$i5" "$pr_line" "$milestone" "${extra:+\n신규 항목:\n$extra}")
+            extra_block=""
+            [ -n "$extra" ] && extra_block=$(printf '\n신규 항목:\n%s' "$extra")
+            planning_body=$(printf '[진행체크] 21세기 집현전 (%s KST)\n\n%s\n%s\n%s\n%s\n\n마일스톤: %s%s' \
+              "$kst_date" "$i3" "$i4" "$i5" "$pr_line" "$milestone" "$extra_block")
           else
             planning_body=$(printf '[진행체크] 21세기 집현전 (%s KST) — 새 활동 없음, 일정 정상. 다들 오늘도 화이팅! 💪' "$kst_date")
           fi
