@@ -110,6 +110,9 @@ run_id: AR-NNN
 stage: source|insight|opportunity|evidence|idea|red-team|solution|experiment|audit|decision
 question: "이번 실행이 답할 질문 하나"
 input_ids: [IN-001, OPP-001]
+authority_class: A|B|C|D|E
+human_owner: H-PO|H-PQ|H-BS|H-FU|H-VD
+approval_id: null|HD-NNN
 allowed_paths: []
 forbidden_actions:
   - merge
@@ -457,8 +460,10 @@ LLM 출력은 한 번에 신뢰하지 않습니다.
 ## 현재 실행 방법
 
 1. `ai.agent-task-queue`에서 상태가 `ready`인 AR-ID를 고릅니다.
-2. 해당 행의 입력 ID와 완료 조건으로 작업 봉투를 만듭니다.
-3. 독립성이 필요한 역할은 별도 세션·에이전트로 실행합니다.
-4. 결과를 실행 기록 템플릿에 남깁니다.
-5. 정본 변경은 작은 브랜치와 draft PR로 제안합니다.
-6. 제품 책임자가 결정한 뒤 관련 정본과 결정 로그를 함께 갱신합니다.
+2. 해당 행의 입력 ID, 완료 조건, 권한 등급, 인간 책임자, 승인 ID로 작업 봉투를 만듭니다.
+3. B–E 작업은 `ai.human-authority-matrix`를 읽고, D·E 작업은 `governance.approval-log`에서 승인 상태를 확인합니다.
+4. 독립성이 필요한 역할은 별도 세션·에이전트로 실행합니다.
+5. 결과를 실행 기록 템플릿에 남깁니다.
+6. 정본 변경은 작은 브랜치와 draft PR로 제안합니다.
+7. D·E 작업은 실제 사람의 `approve` 기록 전에는 `done`이나 다음 게이트로 진행하지 않습니다.
+8. 제품 책임자와 분야 책임자가 결정한 뒤 관련 정본·결정·승인 로그를 함께 갱신합니다.
