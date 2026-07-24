@@ -1,0 +1,23 @@
+name: Validate planning docs
+
+on:
+  pull_request:
+  merge_group:
+  push:
+    branches:
+      - main
+      - "agent/**"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check planning document contracts
+        run: node scripts/validate-planning-docs.mjs
