@@ -2,7 +2,7 @@
 document_id: planning.current-status
 status: active
 owner_role: product-owner
-last_updated: 2026-07-24
+last_updated: 2026-07-25
 selected_idea_id: null
 selected_solution_id: null
 selection_decision: null
@@ -23,6 +23,21 @@ selection_decision: null
 | 서비스 seed | IDEA-001 회동(會同) | 가설 |
 | 표현 자산 | 집현전 세계관, 여러 관점의 비교, 사용자 개입 | 미정 |
 | 구현 원칙 | 제어 가능한 흐름·검증된 데이터·명확한 수용 기준 우선 | 결정 |
+
+## 신규 challenger 제안
+
+사용자가 주입한 돌봄 탐색 인사이트를 `AR-011`에서 인사이트 합성·솔루션 설계·독립 Red Team으로 검토했습니다.
+
+| 항목 | 제안 |
+|---|---|
+| 작업명 | 돌봄 집현전 — 공식 시간제보육 실행 라우터 |
+| 고객 | 세종 거주, 6–36개월 자녀를 가정양육하는 보호자 |
+| 대표 사건 | 갑작스러운 평일 2–4시간 돌봄 공백 |
+| 목표 | 공식 시간제보육의 조건과 미확인 항목을 구분하고 신청·전화로 인계 |
+| 최종 산출물 | 돌봄 확보 실행카드 |
+| 현재 상태 | OPP-005 parked 유지, D-009·HD-002 승인 대기, X-006 미실행 |
+
+공식 서비스가 이미 있으므로 시설 검색·추천이 아니라 조건 판정과 다음 행동 연결을 해결합니다. 실시간 빈자리·예약 성공, 시설 순위, 비공식 매칭, 의료 판단, 아동 민감정보 저장은 P0에서 금지합니다.
 
 ## 현재 비교 대상
 
@@ -69,12 +84,15 @@ selection_decision: null
 - AR-001 원천 분류: done
 - AR-002 인사이트 합성·중복 감사: done
 - AR-003 OPP-001–003 검증 우선순위 비교: ready
+- AR-011 OPP-005 돌봄 challenger 합성·반론·검증 설계: review
 - AR-004–006 고객·운영자 행동 검증 후보: AR-003에서 선택할 두 작업만 모집·실행
 - AR-007 이후 아이디어 생성·반론·솔루션: Gate 2 대기
 
 ## 바로 해야 할 일
 
 - [ ] AR-003 실행: 세 기회 영역의 48시간 검증 우선순위 확정
+- [ ] 팀장PM이 HD-002에서 OPP-005 challenger 진입과 P0 사건을 승인·수정·거절
+- [ ] 승인 시 기획QA가 [Issue #3](https://github.com/sodam3156/21st-JipHyeon-Jeon/issues/3), 백엔드보안이 [Issue #4](https://github.com/sodam3156/21st-JipHyeon-Jeon/issues/4) 실행
 - [ ] 제품 책임자가 AR-003 추천을 검토해 실제 검증할 두 영역을 승인
 - [ ] 선택된 두 영역의 AR-004–006만 `ready`로 전환하고 나머지 하나는 `cancelled` 또는 `blocked` 유지
 - [ ] 선택된 두 작업의 사람 모집 책임자와 완료 시각 확정
@@ -99,3 +117,4 @@ selection_decision: null
 2. 인터뷰 모집 책임자와 완료 시각
 3. IDEA-001을 비교군으로 유지할지 여부
 4. 제품 책임자 대리와 도메인·기술 검토자
+5. HD-002: OPP-005를 48시간 challenger로 검증할지와 통과 시 현재 비교군 교체 여부
