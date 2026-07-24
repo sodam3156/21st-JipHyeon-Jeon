@@ -111,7 +111,7 @@ stage: source|insight|opportunity|evidence|idea|red-team|solution|experiment|aud
 question: "이번 실행이 답할 질문 하나"
 input_ids: [IN-001, OPP-001]
 authority_class: A|B|C|D|E
-human_owner: H-PO|H-PQ|H-BS|H-FU|H-VD
+human_owner: 팀장PM|기획QA|백엔드보안|프론트UX|비주얼디자인
 approval_id: null|HD-NNN
 allowed_paths: []
 forbidden_actions:
