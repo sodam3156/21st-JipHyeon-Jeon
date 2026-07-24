@@ -62,6 +62,11 @@ jobs:
           i4=$(line 4 "공식데이터 스파이크" "$issue4" "$c4")
           i5=$(line 5 "challenger 승인 패킷" "$issue5" "$c5")
 
+          act3=$(recent "$(echo "$issue3" | jq -r '.updated_at // ""')" "$c3")
+          act4=$(recent "$(echo "$issue4" | jq -r '.updated_at // ""')" "$c4")
+          act5=$(recent "$(echo "$issue5" | jq -r '.updated_at // ""')" "$c5")
+          actpr=$(recent "$(echo "$pr6" | jq -r '.updated_at // ""')" "$c6")
+
           extra=$(echo "$allitems" | jq -r '[.[] | select(.number < 3 or .number > 6)] | if length > 0 then (map("- #\(.number) \(.title) (\(.state))") | join("\n")) else "" end')
 
           milestone="[일정상 정상]"
@@ -73,12 +78,26 @@ jobs:
             milestone="[일정 확인 필요] 7/26~27 검증 구간"
           fi
 
-          planning_body=$(printf '[진행체크] 21세기 집현전 (%s KST)\n\n%s\n%s\n%s\n%s\n\n마일스톤: %s\n%s' \
-            "$kst_date" "$i3" "$i4" "$i5" "$pr_line" "$milestone" "${extra:+\n신규 항목:\n$extra}")
+          has_news=false
+          if [ "$act3" = "true" ] || [ "$act4" = "true" ] || [ "$act5" = "true" ] || [ "$actpr" = "true" ] \
+             || [ -n "$extra" ] || [ "$pr_state" = "MERGED" ] || [[ "$milestone" == "[지연"* ]] || [[ "$milestone" == "[일정 확인"* ]]; then
+            has_news=true
+          fi
+
+          if [ "$has_news" = "true" ]; then
+            planning_body=$(printf '[진행체크] 21세기 집현전 (%s KST)\n\n%s\n%s\n%s\n%s\n\n마일스톤: %s\n%s' \
+              "$kst_date" "$i3" "$i4" "$i5" "$pr_line" "$milestone" "${extra:+\n신규 항목:\n$extra}")
+          else
+            planning_body=$(printf '[진행체크] 21세기 집현전 (%s KST) — 새 활동 없음, 일정 정상. 다들 오늘도 화이팅! 💪' "$kst_date")
+          fi
 
           backend_state=$(echo "$issue4" | jq -r '.state' | tr 'a-z' 'A-Z')
           backend_cc=$(echo "$c4" | jq 'length')
-          backend_body=$(printf '[백엔드] 이슈 #4 공식데이터 스파이크: %s, 댓글 %s개\n마일스톤: %s' "$backend_state" "$backend_cc" "$milestone")
+          if [ "$act4" = "true" ] || [[ "$milestone" == "[지연"* ]]; then
+            backend_body=$(printf '[백엔드] 이슈 #4 공식데이터 스파이크: %s, 댓글 %s개\n마일스톤: %s' "$backend_state" "$backend_cc" "$milestone")
+          else
+            backend_body="[백엔드] #4 새 소식 없음 — 화이팅! 💪"
+          fi
 
           jq -n --arg content "$planning_body" '{content:$content}' > planning.json
           jq -n --arg content "$backend_body" '{content:$content}' > backend.json
