@@ -2,7 +2,7 @@
 name: 가설 검증
 about: 고객·문제·솔루션 가설을 인터뷰나 실험으로 검증합니다.
 title: "[검증] "
-labels: validation
+labels: ""
 assignees: ""
 ---
 
@@ -35,4 +35,3 @@ assignees: ""
 - [ ] 지지와 반박 근거를 모두 기록한다.
 - [ ] validation.evidence-log를 갱신한다.
 - [ ] 유지·수정·폐기 결정을 남긴다.
-
