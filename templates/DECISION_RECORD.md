@@ -1,6 +1,7 @@
 ---
-document_id: decision.D-NNN
-status: proposed
+document_id: template.decision-record
+template_for: decision.D-NNN
+status: active
 decision_date: YYYY-MM-DD
 owner_role: product-owner
 ---
@@ -13,8 +14,11 @@ owner_role: product-owner
 
 ## 현재 맥락
 
+- 결정 유형:
+- 대상 ID:
 - 관련 문서 ID:
 - 관련 근거 ID:
+- 관련 인사이트·기회·아이디어 ID:
 - 결정 기한:
 
 ## 대안
@@ -27,7 +31,9 @@ owner_role: product-owner
 ## 결정
 
 - 선택:
+- 탈락·보류 대안:
 - 이유:
+- 승인자:
 - 적용일:
 - 재검토 조건:
 
@@ -36,4 +42,3 @@ owner_role: product-owner
 - 수정할 정본:
 - 중단할 작업:
 - 새로 필요한 검증:
-

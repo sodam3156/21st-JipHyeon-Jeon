@@ -1,6 +1,7 @@
 ---
-document_id: experiment.X-NNN
-status: planned
+document_id: template.experiment-card
+template_for: experiment.X-NNN
+status: active
 owner_role:
 due_date:
 ---
@@ -38,11 +39,14 @@ due_date:
 - 예외:
 - 한계:
 
-## 결정
+## 결과 권고
 
 - [ ] 유지
 - [ ] 수정
 - [ ] 폐기
-- 관련 결정 ID:
+- 권고 이유:
+- 사람 결정 필요 여부:
+- 관련 결정 ID 또는 제안:
 - 수정할 문서 ID:
 
+실험 실행자는 결과를 권고할 수 있지만, 주요 고객·문제·아이디어·P0의 승격은 `governance.decision-log`의 accepted D-ID로만 확정합니다.
