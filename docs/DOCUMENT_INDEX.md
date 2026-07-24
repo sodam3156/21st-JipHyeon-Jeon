@@ -2,7 +2,7 @@
 document_id: repo.document-index
 status: active
 owner_role: product-owner
-last_updated: 2026-07-24
+last_updated: 2026-07-25
 ---
 
 # 문서 색인
@@ -37,6 +37,7 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | ai.prompt-playbook | docs/08_ai/PROMPT_PLAYBOOK.md | 단계별 재사용 프롬프트 | active |
 | agent-run.AR-001 | docs/08_ai/runs/AR-001.md | 조사 원천 분류 실행 기록 | done |
 | agent-run.AR-002 | docs/08_ai/runs/AR-002.md | 인사이트 합성·반론 실행 기록 | done |
+| agent-run.AR-011 | docs/08_ai/runs/AR-011.md | 돌봄 인사이트의 최소 사건·솔루션·반증 설계 | review |
 | template.insight-card | templates/INSIGHT_CARD.md | 인사이트 제안 양식 | active |
 | template.opportunity-brief | templates/OPPORTUNITY_BRIEF.md | 기회 영역 양식 | active |
 | template.idea-card | templates/IDEA_CARD.md | 아이디어 후보 양식 | active |
