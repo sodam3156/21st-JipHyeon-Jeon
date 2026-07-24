@@ -2,7 +2,7 @@
 document_id: governance.decision-log
 status: active
 owner_role: product-owner
-last_updated: 2026-07-24
+last_updated: 2026-07-25
 ---
 
 # 결정 기록
@@ -21,6 +21,7 @@ last_updated: 2026-07-24
 | D-006 | 2026-07-24 | governance | project | accepted | 메인 아이디어는 인사이트·기회·반론·실험 게이트와 사람의 결정 전에는 선택하지 않는다 | 아이디어에 맞춘 사후 근거와 조기 고착 방지 | current-status, insight, opportunity, portfolio, agents |
 | D-007 | 2026-07-24 | authority | project | accepted | AI 에이전트는 조사·초안·비교·검증을 수행하되 메인 아이디어 선택·병합·배포·외부 제출은 사람이 승인한다 | 판단 책임과 가역성 유지 | AGENTS, agent-framework |
 | D-008 | 2026-07-24 | research | E-004, E-005, E-006 | accepted | 해커톤 전략 자료와 백엔드 기술 자료를 고객 문제의 직접 근거로 사용하지 않는다 | 원천 용도 혼합과 거짓 확신 방지 | source-catalog, evidence-log, insight-ledger |
+| D-009 | 2026-07-25 | scope | OPP-005, IDEA-002, X-006 | proposed | 6–36개월·평일·2–4시간 공식 시간제보육 실행 라우터를 48시간 challenger로 검증하고, 통과 시 현재 비교군의 가장 약한 한 영역과 교체할지 결정한다 | 사용자 인사이트를 대표 사건으로 좁히되 최근 행동·운영자·데이터 공백과 공급 비보장 반론을 먼저 검증 | opportunity-map, idea-portfolio, solution-portfolio, evidence-log, current-status, agent queue |
 
 ## 변경 방법
 
@@ -45,6 +46,7 @@ last_updated: 2026-07-24
 
 - D-003 주요 고객 가설과 IDEA-001 유지 여부
 - OPP-001–003 중 먼저 검증할 두 영역
+- D-009와 HD-002: OPP-005 challenger 진입, P0 사건 고정, 통과 시 비교군 교체 여부
 - 2026-07-28까지 메인 아이디어를 선택할 수 있는지와, 근거 부족 시 범위 축소 또는 시한 예외 승인 여부
 - 선택 후 집현전 캐릭터의 수와 역할
 - 선택 후 실제 데이터와 합성 데이터의 데모 범위
