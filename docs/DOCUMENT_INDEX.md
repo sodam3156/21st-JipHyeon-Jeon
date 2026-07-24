@@ -29,6 +29,7 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | product.prd | docs/05_product/PRD.md | 선택 아이디어 확정 전 의도적으로 빈 구현 정본 | draft |
 | delivery.hackathon-plan | docs/06_delivery/HACKATHON_PLAN.md | 일정·게이트·데모·발표 계획 | active |
 | governance.decision-log | docs/07_decisions/DECISION_LOG.md | 결정과 변경 이유 | active |
+| governance.approval-log | docs/07_decisions/APPROVAL_LOG.md | 인간 승인 요청·결과·범위 정본 | active |
 | governance.gate-log | docs/07_decisions/GATE_LOG.md | 대상별 게이트 판정·검토·예외 정본 | active |
 | ai.agent-framework | docs/08_ai/AGENT_FRAMEWORK.md | 인사이트 기반 에이전트 운영 체계 | active |
 | ai.human-authority-matrix | docs/08_ai/HUMAN_AUTHORITY_MATRIX.md | 5인 팀 실행·검토·승인·차단 권한 정본 | active |
