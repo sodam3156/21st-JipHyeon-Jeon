@@ -2,7 +2,7 @@
 name: 실행 작업
 about: 기획, 디자인, 개발, 발표 작업을 완료 기준과 함께 정의합니다.
 title: "[작업] "
-labels: task
+labels: ""
 assignees: ""
 ---
 
@@ -32,4 +32,3 @@ assignees: ""
 ## 검증 방법
 
 ## 담당 역할과 기한
-
