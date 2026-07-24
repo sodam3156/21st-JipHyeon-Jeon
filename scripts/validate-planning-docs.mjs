@@ -308,7 +308,7 @@ if (selectedIdea) {
 }
 
 const allowedAuthorityClasses = new Set(["A", "B", "C", "D", "E"]);
-const humanRoleIds = new Set(["H-PO", "H-PQ", "H-BS", "H-FU", "H-VD"]);
+const humanRoleIds = new Set(["팀장PM", "기획QA", "백엔드보안", "프론트UX", "비주얼디자인"]);
 const allowedApprovalStates = new Set(["pending", "approve", "revise", "reject", "defer", "expired"]);
 const approvalStates = new Map();
 
@@ -357,7 +357,7 @@ if (!taskQueue) {
     if (!allowedAuthorityClasses.has(authorityClass)) {
       fail(`agent task queue ${runId}: 잘못된 권한 등급 ${authorityClass}`);
     }
-    const owners = humanOwners.match(/H-(?:PO|PQ|BS|FU|VD)/g) ?? [];
+    const owners = humanOwners.split(/[·,\s]+/).filter(Boolean);
     if (!owners.length || owners.some((owner) => !humanRoleIds.has(owner))) {
       fail(`agent task queue ${runId}: 유효한 인간 책임자가 필요합니다.`);
     }
