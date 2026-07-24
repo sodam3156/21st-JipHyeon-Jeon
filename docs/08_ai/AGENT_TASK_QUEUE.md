@@ -2,7 +2,7 @@
 document_id: ai.agent-task-queue
 status: active
 owner_role: product-owner
-last_updated: 2026-07-24
+last_updated: 2026-07-25
 ---
 
 # AI 에이전트 작업 큐
@@ -23,6 +23,7 @@ last_updated: 2026-07-24
 | AR-008 | red-team | 생성된 아이디어의 치명 반례는 무엇인가? | AR-007 | Red Team | B | 기획QA·백엔드보안·프론트UX | - | 근거 오류·탈락 조건·최소 반증 실험, 비교 후보 최대 3개 | - | blocked |
 | AR-009 | solution | 반론을 통과한 각 후보의 최소 end-to-end 흐름은 무엇인가? | AR-008 | Solution Architect | D | 백엔드보안·프론트UX·팀장PM | - | 최대 3개 후보의 SOL 카드·P0·계약·승인·실패 경로·3분 발표 안의 90초 핵심 데모·Gate 4 판정 | - | blocked |
 | AR-010 | decision | 어느 후보를 메인 아이디어로 선택할 것인가? | AR-003, 선택된 AR-004–006 두 개, AR-007–009, 실험 결과 | Judge, 제품 책임자 | D | 팀장PM | - | D-ID와 연관 정본 동시 변경 | - | blocked |
+| AR-011 | opportunity | 새 돌봄 인사이트를 어떤 최소 사건·솔루션·반증 실험으로 바꿀 것인가? | 사용자·멘토 입력, E-004, SJAX-P0018·0238·0239, 공식 시간제보육 원문, IN-001·006·007·009·017–019 | Insight Synthesizer, Solution Architect, Red Team | D | 팀장PM | HD-002 | 근거·가설 분리, 최소 솔루션, 즉시 탈락 조건, X-006, 사람 승인 질문 | [실행 기록](runs/AR-011.md) | review |
 
 ## 실행 claim
 
@@ -40,6 +41,7 @@ last_updated: 2026-07-24
 | AR-008 | AR-007 | - | - | - | 제품 책임자와 생성 세션과 다른 Red Team |
 | AR-009 | AR-008 | - | - | - | 기술 검토자 |
 | AR-010 | AR-003, 선택된 AR-004–006 두 개, AR-007–009, 실험 결과 | - | - | - | 제품 책임자 |
+| AR-011 | AR-001, AR-002 | Codex multi-agent | 2026-07-25 | fa6c332 | 팀장PM·기획QA·백엔드보안·프론트UX·비주얼디자인 |
 
 ## 차단 해제 조건
 
