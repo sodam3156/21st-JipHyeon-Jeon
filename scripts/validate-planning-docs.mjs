@@ -307,6 +307,84 @@ if (selectedIdea) {
   }
 }
 
+const allowedAuthorityClasses = new Set(["A", "B", "C", "D", "E"]);
+const humanRoleIds = new Set(["팀장PM", "기획QA", "백엔드보안", "프론트UX", "비주얼디자인"]);
+const allowedApprovalStates = new Set(["pending", "approve", "revise", "reject", "defer", "expired"]);
+const approvalStates = new Map();
+
+const approvalLog = documents.get("governance.approval-log");
+if (!approvalLog) {
+  fail("governance.approval-log가 없습니다.");
+} else {
+  const rows = markdownRows(approvalLog.content, "## 승인 목록").filter(
+    (row) => row[0] !== "승인 ID"
+  );
+  for (const row of rows) {
+    if (row.length !== 10) {
+      fail(`approval log 행은 10열이어야 합니다: ${row.join(" | ")}`);
+      continue;
+    }
+    const [id, runId, , authorityClass, owner, state, approver, approvedAt] = row;
+    if (!/^HD-\d{3}$/.test(id)) fail(`approval log의 잘못된 ID: ${id}`);
+    if (approvalStates.has(id)) fail(`approval log에 ${id}가 중복됐습니다.`);
+    if (!/^AR-\d{3}$/.test(runId)) fail(`approval log ${id}: 연결 실행 형식 오류 ${runId}`);
+    if (!allowedAuthorityClasses.has(authorityClass)) {
+      fail(`approval log ${id}: 잘못된 권한 등급 ${authorityClass}`);
+    }
+    if (!humanRoleIds.has(owner)) fail(`approval log ${id}: 잘못된 인간 책임자 ${owner}`);
+    if (!allowedApprovalStates.has(state)) fail(`approval log ${id}: 잘못된 상태 ${state}`);
+    if (state === "approve") {
+      if (!humanReviewer(approver)) fail(`approval log ${id}: approve에는 실제 사람 승인자가 필요합니다.`);
+      if (!validDate(approvedAt)) fail(`approval log ${id}: approve에는 유효한 승인일이 필요합니다.`);
+    }
+    approvalStates.set(id, { runId, authorityClass, owner, state });
+  }
+}
+
+const taskQueue = documents.get("ai.agent-task-queue");
+if (!taskQueue) {
+  fail("ai.agent-task-queue가 없습니다.");
+} else {
+  const rows = markdownRows(taskQueue.content, "## 현재 큐").filter(
+    (row) => /^AR-\d{3}$/.test(row[0])
+  );
+  for (const row of rows) {
+    if (row.length !== 11) {
+      fail(`agent task queue ${row[0]} 행은 11열이어야 합니다.`);
+      continue;
+    }
+    const [runId, , , , , authorityClass, humanOwners, approvalId, , , state] = row;
+    if (!allowedAuthorityClasses.has(authorityClass)) {
+      fail(`agent task queue ${runId}: 잘못된 권한 등급 ${authorityClass}`);
+    }
+    const owners = humanOwners.split(/[·,\s]+/).filter(Boolean);
+    if (!owners.length || owners.some((owner) => !humanRoleIds.has(owner))) {
+      fail(`agent task queue ${runId}: 유효한 인간 책임자가 필요합니다.`);
+    }
+    if (approvalId !== "-") {
+      if (!/^HD-\d{3}$/.test(approvalId)) {
+        fail(`agent task queue ${runId}: 잘못된 승인 ID ${approvalId}`);
+      } else {
+        const approval = approvalStates.get(approvalId);
+        if (!approval) fail(`agent task queue ${runId}: 승인 로그에 ${approvalId}가 없습니다.`);
+        else {
+          if (approval.runId !== runId) fail(`agent task queue ${runId}: ${approvalId}의 연결 실행이 다릅니다.`);
+          if (approval.authorityClass !== authorityClass) {
+            fail(`agent task queue ${runId}: 권한 등급이 ${approvalId}와 다릅니다.`);
+          }
+        }
+      }
+    }
+    if (["D", "E"].includes(authorityClass) && state === "done") {
+      if (approvalId === "-") {
+        fail(`agent task queue ${runId}: D·E done에는 승인 ID가 필요합니다.`);
+      } else if (approvalStates.get(approvalId)?.state !== "approve") {
+        fail(`agent task queue ${runId}: D·E done에는 approve 상태가 필요합니다.`);
+      }
+    }
+  }
+}
+
 const gateLog = documents.get("governance.gate-log");
 const allowedOutcomes = new Set(["pending", "partial", "passed", "blocked", "waived"]);
 const gateSummary = new Map();

@@ -29,8 +29,10 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | product.prd | docs/05_product/PRD.md | 선택 아이디어 확정 전 의도적으로 빈 구현 정본 | draft |
 | delivery.hackathon-plan | docs/06_delivery/HACKATHON_PLAN.md | 일정·게이트·데모·발표 계획 | active |
 | governance.decision-log | docs/07_decisions/DECISION_LOG.md | 결정과 변경 이유 | active |
+| governance.approval-log | docs/07_decisions/APPROVAL_LOG.md | 인간 승인 요청·결과·범위 정본 | active |
 | governance.gate-log | docs/07_decisions/GATE_LOG.md | 대상별 게이트 판정·검토·예외 정본 | active |
 | ai.agent-framework | docs/08_ai/AGENT_FRAMEWORK.md | 인사이트 기반 에이전트 운영 체계 | active |
+| ai.human-authority-matrix | docs/08_ai/HUMAN_AUTHORITY_MATRIX.md | 5인 팀 실행·검토·승인·차단 권한 정본 | active |
 | ai.agent-task-queue | docs/08_ai/AGENT_TASK_QUEUE.md | 에이전트 질문·선행조건·상태 | active |
 | ai.prompt-playbook | docs/08_ai/PROMPT_PLAYBOOK.md | 단계별 재사용 프롬프트 | active |
 | agent-run.AR-001 | docs/08_ai/runs/AR-001.md | 조사 원천 분류 실행 기록 | done |
@@ -40,6 +42,7 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | template.idea-card | templates/IDEA_CARD.md | 아이디어 후보 양식 | active |
 | template.solution-card | templates/SOLUTION_CARD.md | 비교 후보별 최소 솔루션 양식 | active |
 | template.agent-run | templates/AGENT_RUN.md | 에이전트 실행 기록 양식 | active |
+| template.approval-packet | templates/APPROVAL_PACKET.md | 인간 승인 요청·결과 기록 양식 | active |
 | template.interview-note | templates/INTERVIEW_NOTE.md | 인터뷰 기록 양식 | active |
 | template.experiment-card | templates/EXPERIMENT_CARD.md | 검증 실험 양식 | active |
 | template.decision-record | templates/DECISION_RECORD.md | 주요 결정 양식 | active |

@@ -15,7 +15,8 @@ last_updated: 2026-07-24
 2. `docs/DOCUMENT_INDEX.md`
 3. `docs/00_overview/CURRENT_STATUS.md`
 4. `docs/07_decisions/GATE_LOG.md`
-5. 요청과 관련된 정본 문서
+5. `docs/08_ai/HUMAN_AUTHORITY_MATRIX.md`
+6. 요청과 관련된 정본 문서
 
 상태·근거·게이트·고객·문제·아이디어·P0를 바꾸는 Full gate 작업은 `docs/00_overview/INSIGHT_LEDGER.md`, `docs/00_overview/OPPORTUNITY_MAP.md`, `docs/04_validation/EVIDENCE_LOG.md`, `docs/07_decisions/GATE_LOG.md`, `docs/07_decisions/DECISION_LOG.md`를 추가로 읽습니다. 아이디어·솔루션 비교는 `docs/03_solution/IDEA_PORTFOLIO.md`와 `docs/03_solution/SOLUTION_PORTFOLIO.md`도 읽습니다. AI 에이전트 실행은 `docs/08_ai/AGENT_FRAMEWORK.md`와 `docs/08_ai/AGENT_TASK_QUEUE.md`도 읽습니다.
 
@@ -152,21 +153,27 @@ last_updated: 2026-07-24
 
 ## 11. 권한과 안전
 
+인간 책임자, 권한 등급, 상호 검토, 차단권, 부재 시 동작은 `ai.human-authority-matrix`를 정본으로 사용합니다.
+
+작업 봉투에는 변경 영향에 따라 `authority_class`, `human_owner`, `approval_id`를 명시합니다. 사람 승인 또는 직접 수행이 필요한 작업은 실제 사람의 응답·실행 기록 없이 `done`이나 게이트 통과로 바꾸지 않습니다. 응답이 없으면 자동 승인하지 않고 `blocked` 또는 `review`를 유지합니다.
+
 AI가 사람 승인 없이 할 수 있는 일:
 
 - 읽기, 비교, 조사, 초안, 코드 패치, 로컬 테스트
 - 별도 브랜치와 draft PR 제안
+- 권한 A 작업과 승인 전 B 작업의 가역적 준비
 
-사람 승인 후에만 할 수 있는 일:
+사람 검토·결정 또는 직접 수행이 필요한 일:
 
-- main 병합과 운영 배포
-- 외부 메시지·기관 제출
-- 실제 개인정보·민감정보 사용
-- 비용 상한·도구 권한·외부 전송 범위 확대
+- 고객 인터뷰·현장 관찰·팀 협의·사용성 판정
+- 주요 고객·핵심 문제·P0·메인 아이디어·예산 결정
+- 개인정보·세션·보안·외부 전송 범위 승인
+- main 병합·운영 배포·외부 메시지·기관 제출
 - 비가역 변경과 데이터 마이그레이션
-- 메인 아이디어 `selected` 승격
 
-비밀값, 개인정보, 공개 불가 자산은 저장소·로그·데모 데이터에 넣지 않습니다.
+B–E 등급 승인 요청은 `template.approval-packet`으로 선택지, 추천, 지지·반박 근거, 결과별 영향, 승인 범위와 응답 없음 동작을 제시합니다.
+
+비밀값, 개인정보, 공개 불가 자산은 저장소·로그·데모 데이터에 넣지 않습니다. 실제 개인정보·비밀값 노출, 미승인 외부 발송, 재현 가능한 중대 보안 취약점은 waiver하지 않고 기능 제거 또는 합성 데이터·오프라인 축소 모드로 전환합니다.
 
 ## 12. Pull Request 결과 형식
 
