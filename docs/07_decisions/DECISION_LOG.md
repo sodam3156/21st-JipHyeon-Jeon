@@ -22,6 +22,7 @@ last_updated: 2026-07-25
 | D-007 | 2026-07-24 | authority | project | accepted | AI 에이전트는 조사·초안·비교·검증을 수행하되 메인 아이디어 선택·병합·배포·외부 제출은 사람이 승인한다 | 판단 책임과 가역성 유지 | AGENTS, agent-framework |
 | D-008 | 2026-07-24 | research | E-004, E-005, E-006 | accepted | 해커톤 전략 자료와 백엔드 기술 자료를 고객 문제의 직접 근거로 사용하지 않는다 | 원천 용도 혼합과 거짓 확신 방지 | source-catalog, evidence-log, insight-ledger |
 | D-009 | 2026-07-25 | scope | OPP-005, IDEA-002, X-006 | proposed | 6–36개월·평일·2–4시간 공식 시간제보육 실행 라우터를 48시간 challenger로 검증하고, 통과 시 현재 비교군의 가장 약한 한 영역과 교체할지 결정한다 | 사용자 인사이트를 대표 사건으로 좁히되 최근 행동·운영자·데이터 공백과 공급 비보장 반론을 먼저 검증 | opportunity-map, idea-portfolio, solution-portfolio, evidence-log, current-status, agent queue |
+| D-010 | 2026-07-25 | selection | IDEA-002, SOL-002, OPP-005 | accepted | 돌봄 집현전(공식 시간제보육 실행 라우터, OPP-005 / IDEA-002 / SOL-002)을 메인 아이디어로 확정한다. OPP-001–003 비교군은 1차 비교 대상에서 제외한다 | 제품 책임자가 선택 시한(2026-07-28)과 제출 시한(2026-08-11)을 근거로 Gate 0–5 정식 통과 전에 직접 확정 — D-006의 게이트 조건에 대한 명시적 예외. 관련 Gate는 `governance.gate-log`에 waived로 기록하고 이슈 #3(48시간 검증)·#4(공식 데이터 스파이크)·원천·인사이트 사람 표본 검토는 선택 이후에도 계속 진행해 waiver를 사후 passed로 전환한다 | current-status, opportunity-map, idea-portfolio, solution-portfolio, solution-brief, problem-definition, primary-customer, PRD, gate-log |
 
 ## 변경 방법
 
@@ -44,9 +45,8 @@ last_updated: 2026-07-25
 
 ## 미해결 결정
 
-- D-003 주요 고객 가설과 IDEA-001 유지 여부
-- OPP-001–003 중 먼저 검증할 두 영역
-- D-009와 HD-002: OPP-005 challenger 진입, P0 사건 고정, 통과 시 비교군 교체 여부
-- 2026-07-28까지 메인 아이디어를 선택할 수 있는지와, 근거 부족 시 범위 축소 또는 시한 예외 승인 여부
+- D-003 주요 고객 가설과 IDEA-001 유지 여부 — IDEA-001은 D-010 이후 `parked`, 폐기 아님
+- D-009와 HD-002: OPP-005/IDEA-002 waiver를 실제 근거(이슈 #3·#4)로 passed 전환할지, 실패 기준 충족 시 D-010을 superseded 처리할지
 - 선택 후 집현전 캐릭터의 수와 역할
 - 선택 후 실제 데이터와 합성 데이터의 데모 범위
+- D-010 waiver 만료일(2026-08-11) 전 재검토 책임자 지정
