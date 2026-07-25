@@ -14,6 +14,7 @@ last_updated: 2026-07-25
 | 승인 ID | 연결 실행 | 결정 질문 | 권한 등급 | 책임자 | 상태 | 실제 승인자 | 승인일 | 범위·조건 | 승인 패킷·근거 |
 |---|---|---|---|---|---|---|---|---|---|
 | HD-001 | AR-003 | OPP-001–003 중 48시간 검증할 두 영역을 승인할 것인가? | D | 팀장PM | pending | - | - | AR-003 결과와 같은 기준 비교 검토 후 결정 | template.approval-packet으로 작성 예정 |
+| HD-002 | AR-011 | OPP-005를 6–36개월·평일·2–4시간 공식 시간제보육 challenger로 48시간 검증하고, 통과 시 현재 비교군 하나와 교체할 것인가? | D | 팀장PM | pending | - | - | selected·passed·PRD 확정 금지; 기획QA·백엔드보안·프론트UX·비주얼디자인 검토 | [Issue #5](https://github.com/sodam3156/21st-JipHyeon-Jeon/issues/5) |
 
 ## 상태
 
