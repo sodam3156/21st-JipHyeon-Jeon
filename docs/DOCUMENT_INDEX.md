@@ -2,7 +2,7 @@
 document_id: repo.document-index
 status: active
 owner_role: product-owner
-last_updated: 2026-07-25
+last_updated: 2026-07-26
 ---
 
 # 문서 색인
@@ -26,6 +26,7 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | validation.research-source-catalog | docs/04_validation/RESEARCH_SOURCE_CATALOG.md | 조사 원천·용도·한계 | active |
 | validation.source-snapshot-manifest | docs/04_validation/SOURCE_SNAPSHOT_MANIFEST.md | 외부 조사 원본의 파일 식별자·해시 | active |
 | validation.evidence-log | docs/04_validation/EVIDENCE_LOG.md | 고객·문제·솔루션 근거와 반증 | active |
+| validation.opp005-user-demand-research | docs/04_validation/OPP_005_USER_DEMAND_RESEARCH.md | OPP-005 주요 사용자·규모·공식 수요·공개 행동사례·기능 우선순위·검증계획 통합 조사 | active |
 | product.prd | docs/05_product/PRD.md | D-010으로 선택된 SOL-002 구현 정본 | active |
 | delivery.hackathon-plan | docs/06_delivery/HACKATHON_PLAN.md | 일정·게이트·데모·발표 계획 | active |
 | governance.decision-log | docs/07_decisions/DECISION_LOG.md | 결정과 변경 이유 | active |
@@ -36,7 +37,7 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | ai.agent-task-queue | docs/08_ai/AGENT_TASK_QUEUE.md | 에이전트 질문·선행조건·상태 | active |
 | ai.prompt-playbook | docs/08_ai/PROMPT_PLAYBOOK.md | 단계별 재사용 프롬프트 | active |
 | agent-run.AR-001 | docs/08_ai/runs/AR-001.md | 조사 원천 분류 실행 기록 | done |
-| agent-run.AR-002 | docs/08_ai/runs/AR-002.md | 인사이트 합성·반론 실행 기록 | done |
+| agent-run.AR-002 | docs/08_ai/runs/AR-002.md | 인사이트 합성·중복 감사 | done |
 | agent-run.AR-011 | docs/08_ai/runs/AR-011.md | 돌봄 인사이트의 최소 사건·솔루션·반증 설계 | review |
 | template.insight-card | templates/INSIGHT_CARD.md | 인사이트 제안 양식 | active |
 | template.opportunity-brief | templates/OPPORTUNITY_BRIEF.md | 기회 영역 양식 | active |
