@@ -203,7 +203,23 @@ main 브랜치에 직접 반영하지 말고, 사람이 검토할 수 있는 작
 - 저장소가 공유하는 것은 이 13절의 **규칙**이고, 도구 설치 상태가 아닙니다.
 - `.claude/settings.json`에 편집 전후 훅 7종이 등록됩니다. 훅은 편집할 때마다 실제로 실행되므로, 훅을 늘리거나 바꾸기 전에 무엇이 실행되는지 확인합니다.
 - MCP 서버 설정의 기본 `CLAUDE_FLOW_MAX_AGENTS`는 15입니다. 설치 후 8로 낮춥니다.
-- CLI는 `npx ruflo@latest <명령>`으로 호출합니다.
+
+### 버전 고정 (2026-07-29 기준)
+
+**`ruflo@latest`를 쓰지 않습니다. `@claude-flow/cli@3.32.26`으로 고정합니다.**
+
+`ruflo`는 얇은 래퍼라 실제 구현인 `@claude-flow/cli`의 최신 버전을 그때그때 끌어옵니다. 2026-07-29 04:48 UTC에 배포된 `3.32.29`는 선언하지 않은 `@claude-flow/security`를 import 해서 **CLI와 MCP 서버가 모두 기동하지 않습니다**. `@claude-flow/security`의 공개된 어떤 버전도 이 import가 요구하는 export를 제공하지 않으므로 설치로 우회할 수 없습니다.
+
+```bash
+npx -y @claude-flow/cli@3.32.26 <명령>          # CLI
+claude mcp add ruflo -- cmd /c npx -y @claude-flow/cli@3.32.26 mcp start   # MCP (Windows)
+```
+
+`npx ruflo@latest ...`가 `ERR_MODULE_NOT_FOUND: Cannot find package '@claude-flow/security'`로 죽으면 이 문제입니다. 상류에서 고쳐진 뒤 고정 버전을 올립니다.
+
+`ruflo init`이 만드는 `.mcp.json`도 `ruflo@latest`를 가리키므로 같은 이유로 기동하지 않습니다. 위 `claude mcp add`로 등록했다면 `.mcp.json`은 지웁니다. 중복 등록은 같은 도구를 두 번 노출할 뿐입니다.
+
+**Windows에서 Git Bash로 등록하지 마세요.** MSYS 경로 변환이 `/c`를 `C:/`로 바꿔 명령이 깨집니다. PowerShell을 쓰거나 `MSYS_NO_PATHCONV=1`을 앞에 붙입니다.
 
 ### 에이전트 상한과 구성
 
