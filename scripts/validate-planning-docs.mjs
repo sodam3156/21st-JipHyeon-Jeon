@@ -17,7 +17,8 @@ function warn(message) {
 
 function walk(directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-    if ([".git", "node_modules"].includes(entry.name)) return [];
+    // .claude, .agents 는 ruflo가 넣은 벤더 파일이라 기획 문서가 아니다.
+    if ([".git", "node_modules", ".claude", ".agents", ".claude-flow"].includes(entry.name)) return [];
     const fullPath = path.join(directory, entry.name);
     return entry.isDirectory() ? walk(fullPath) : [fullPath];
   });
@@ -67,7 +68,9 @@ function validateApproval(context, outcome, reviewer, reviewedAt, waiver, expire
   }
 }
 
-function frontmatter(content) {
+function frontmatter(rawContent) {
+  // Windows 체크아웃은 CRLF로 저장되므로 정규화한 뒤 판별한다.
+  const content = rawContent.replace(/\r\n/g, "\n");
   if (!content.startsWith("---\n")) return {};
   const end = content.indexOf("\n---\n", 4);
   if (end === -1) return {};
