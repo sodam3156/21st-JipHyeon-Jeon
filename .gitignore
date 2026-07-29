@@ -1,0 +1,15 @@
+# ruflo 가 생성하는 파일 — 각자 `npx ruflo@latest init` 으로 만든다.
+# 커밋하지 않는 이유는 AGENTS.md 13절에 있다.
+.claude/
+.agents/
+.claude-flow/
+.swarm/
+.mcp.json
+ruvector.db
+ruvector.db-*
+*.rvf.lock
+
+# 의존성·환경
+node_modules/
+.env
+.env.*

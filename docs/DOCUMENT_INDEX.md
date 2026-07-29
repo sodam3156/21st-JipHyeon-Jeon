@@ -2,7 +2,7 @@
 document_id: repo.document-index
 status: active
 owner_role: product-owner
-last_updated: 2026-07-26
+last_updated: 2026-07-29
 ---
 
 # 문서 색인
@@ -13,6 +13,7 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 |---|---|---|---|
 | repo.start-here | README.md | 프로젝트 진입점 | active |
 | repo.ai-instructions | AGENTS.md | AI 작업 규칙 | active |
+| repo.claude-entrypoint | CLAUDE.md | Claude Code 진입점, AGENTS.md 포인터 | active |
 | repo.collaboration-guide | CONTRIBUTING.md | 사람 중심 협업 규칙 | active |
 | repo.document-index | docs/DOCUMENT_INDEX.md | 문서 ID와 정본 경로 | active |
 | planning.current-status | docs/00_overview/CURRENT_STATUS.md | 확정·가설·미정·게이트 현황 | active |

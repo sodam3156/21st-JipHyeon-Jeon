@@ -2,7 +2,7 @@
 document_id: repo.ai-instructions
 status: active
 owner_role: product-owner
-last_updated: 2026-07-24
+last_updated: 2026-07-29
 ---
 
 # AI 협업 지침
@@ -110,7 +110,7 @@ last_updated: 2026-07-24
 
 ## 9. AI 에이전트 실행
 
-에이전트는 `ai.agent-framework`의 게이트와 역할 계약을 따릅니다.
+에이전트는 `ai.agent-framework`의 게이트와 역할 계약을 따릅니다. 오케스트레이션 도구(ruflo)로 여러 에이전트를 동시에 돌릴 때의 상한과 절차는 13절을 따릅니다.
 
 - `ai.agent-task-queue`에서 `ready`인 AR-ID로 시작합니다.
 - 한 실행은 질문 하나와 단계 하나만 처리합니다.
@@ -191,3 +191,62 @@ B–E 등급 승인 요청은 `template.approval-packet`으로 선택지, 추천
 문서 변경 후 `node scripts/validate-planning-docs.mjs`를 실행하고 결과를 PR에 기록합니다.
 
 main 브랜치에 직접 반영하지 말고, 사람이 검토할 수 있는 작은 Pull Request를 기본으로 합니다.
+
+## 13. ruflo 오케스트레이션 운영
+
+이 저장소는 멀티에이전트 오케스트레이션 도구 [ruflo](https://github.com/ruvnet/ruflo)를 사용합니다. 이 절은 도구 사용 규칙이며, 1절부터 12절까지의 기획·근거·권한 규칙을 대체하지 않습니다. **ruflo가 생성한 설정과 이 문서가 충돌하면 이 문서를 따릅니다.**
+
+### 도구 구성
+
+- 정본 지침은 `AGENTS.md` 하나입니다. `CLAUDE.md`는 이 문서를 가리키는 포인터이며, 여기에 규칙을 중복해 적지 않습니다.
+- **ruflo는 각자 로컬에서 `npx ruflo@latest init`으로 설치합니다.** 생성물(`.claude/`, `.agents/`, `.claude-flow/`, `.swarm/`, `.mcp.json`, `ruvector.db`)은 커밋하지 않습니다. 241개 벤더 파일이 PR을 덮어 사람이 검토할 수 없게 되고, `.mcp.json`은 생성한 OS에 종속됩니다(Windows에서는 `cmd /c`가 박힙니다).
+- 저장소가 공유하는 것은 이 13절의 **규칙**이고, 도구 설치 상태가 아닙니다.
+- `.claude/settings.json`에 편집 전후 훅 7종이 등록됩니다. 훅은 편집할 때마다 실제로 실행되므로, 훅을 늘리거나 바꾸기 전에 무엇이 실행되는지 확인합니다.
+- MCP 서버 설정의 기본 `CLAUDE_FLOW_MAX_AGENTS`는 15입니다. 설치 후 8로 낮춥니다.
+
+### 버전 고정 (2026-07-29 기준)
+
+**`ruflo@latest`를 쓰지 않습니다. `@claude-flow/cli@3.32.26`으로 고정합니다.**
+
+`ruflo`는 얇은 래퍼라 실제 구현인 `@claude-flow/cli`의 최신 버전을 그때그때 끌어옵니다. 2026-07-29 04:48 UTC에 배포된 `3.32.29`는 선언하지 않은 `@claude-flow/security`를 import 해서 **CLI와 MCP 서버가 모두 기동하지 않습니다**. `@claude-flow/security`의 공개된 어떤 버전도 이 import가 요구하는 export를 제공하지 않으므로 설치로 우회할 수 없습니다.
+
+```bash
+npx -y @claude-flow/cli@3.32.26 <명령>          # CLI
+claude mcp add ruflo -- cmd /c npx -y @claude-flow/cli@3.32.26 mcp start   # MCP (Windows)
+```
+
+`npx ruflo@latest ...`가 `ERR_MODULE_NOT_FOUND: Cannot find package '@claude-flow/security'`로 죽으면 이 문제입니다. 상류에서 고쳐진 뒤 고정 버전을 올립니다.
+
+`ruflo init`이 만드는 `.mcp.json`도 `ruflo@latest`를 가리키므로 같은 이유로 기동하지 않습니다. 위 `claude mcp add`로 등록했다면 `.mcp.json`은 지웁니다. 중복 등록은 같은 도구를 두 번 노출할 뿐입니다.
+
+**Windows에서 Git Bash로 등록하지 마세요.** MSYS 경로 변환이 `/c`를 `C:/`로 바꿔 명령이 깨집니다. PowerShell을 쓰거나 `MSYS_NO_PATHCONV=1`을 앞에 붙입니다.
+
+### 에이전트 상한과 구성
+
+- 한 작업에서 동시에 쓰는 에이전트는 **최대 8개**입니다. ruflo 기본 설정은 15개이지만 이 저장소는 8개로 제한합니다.
+- 기본 구성은 researcher, coder, tester, reviewer이며, 계층형(hierarchical) 코디네이터 하나가 작업을 나누고 결과를 모읍니다.
+- 역할이 겹치면 조정 비용과 모델 사용량만 늘어납니다. 부족할 때만 역할을 추가합니다.
+- 생성과 반론은 9절에 따라 독립된 에이전트에서 수행합니다. 같은 에이전트가 자기 결과물을 반박하게 하지 않습니다.
+
+### 스웜을 쓰는 경우와 쓰지 않는 경우
+
+- **씁니다**: 파일 3개 이상을 함께 바꾸는 작업, 여러 원천을 동시에 조사해 교차 검증하는 작업, 구현과 테스트와 리뷰가 함께 필요한 작업.
+- **쓰지 않습니다**: 문서 한 편 수정, 오탈자·링크 교정, 설정 변경, 단순 질문. 조정 비용이 결과보다 큽니다.
+- 에이전트 수가 많다고 결과가 좋아지지 않습니다. 완료를 판정하는 근거는 에이전트 수가 아니라 12절의 검증 기록입니다.
+
+### 메모리
+
+- 성공한 작업 패턴은 `npx ruflo@latest memory store`로 남겨 다음 작업에서 재사용합니다.
+- **비밀값, 개인정보, 고객 발언 원문, 공개 불가 자산은 메모리에 넣지 않습니다.** 메모리는 기본 설정에서 암호화되지 않은 로컬 파일로 저장됩니다(11절).
+- 메모리에 남은 내용은 근거가 아닙니다. 근거는 `validation.evidence-log`에만 기록합니다.
+
+### 실행 후 검증
+
+- 문서를 바꿨으면 `node scripts/validate-planning-docs.mjs`를 실행합니다. 이 저장소에는 `npm test`·`npm run build`가 없으므로 ruflo 기본 설정의 해당 지시는 적용하지 않습니다.
+- 에이전트의 보고문이 아니라 파일 재조회·검증 스크립트·실제 경로로 완료를 증명합니다(9절).
+- 결과는 12절의 PR 형식으로 정리합니다. 사람 승인이 필요한 항목은 11절에 따라 `blocked` 또는 `review`로 남깁니다.
+
+### 비용
+
+- 백그라운드 데몬(`ruflo daemon start`)은 주기적으로 headless 세션을 띄워 토큰을 계속 소모합니다. 필요할 때만 켜고, 쓰고 나면 끕니다.
+- ruflo 코드는 MIT이지만 추론 비용은 Claude Code 구독과 연결한 모델 API에 그대로 부과됩니다.
