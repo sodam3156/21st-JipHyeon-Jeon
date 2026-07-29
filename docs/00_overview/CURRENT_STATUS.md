@@ -2,10 +2,10 @@
 document_id: planning.current-status
 status: active
 owner_role: product-owner
-last_updated: 2026-07-25
-selected_idea_id: IDEA-002
-selected_solution_id: SOL-002
-selection_decision: D-010
+last_updated: 2026-07-29
+selected_idea_id: null
+selected_solution_id: null
+selection_decision: null
 ---
 
 # 현재 상태
@@ -18,13 +18,28 @@ selection_decision: D-010
 | 대주제 | AI 콘텐츠 제작 | 사실 |
 | 소주제 | SW 서비스 개발 | 사실 |
 | 제출 목표일 | 2026-08-11 | 사실 |
-| 현재 단계 | 메인 아이디어 확정(D-010, waived) · PRD·문제·고객 정본 채움 · Gate waiver를 실제 근거로 전환 중 | 진행 상태 |
-| 메인 아이디어 | IDEA-002 돌봄 집현전 (SOL-002) | 결정 |
+| 현재 단계 | 메인 전환(D-011) — MSGA 데모·백월·발표 준비 | 진행 상태 |
+| 메인 아이디어 | Make Sejong Great Again — 운영자 승인형 다교차로 교통제어 데모 (D-011) | 결정 |
+| 이전 메인 | IDEA-002 돌봄 집현전 (SOL-002) — D-011로 폐지 | 이력 |
 | 서비스 seed | IDEA-001 회동(會同) — D-010 이후 `parked` | 가설 |
 | 표현 자산 | 집현전 세계관, 여러 관점의 비교, 사용자 개입 | 미정 |
 | 구현 원칙 | 제어 가능한 흐름·검증된 데이터·명확한 수용 기준 우선 | 결정 |
 
-## 메인 아이디어 확정 — D-010
+## 메인 전환 — D-011 (2026-07-29)
+
+제품 책임자가 2026-07-29 `IDEA-002 돌봄 집현전`을 폐지하고 메인을 **Make Sejong Great Again**(운영자 승인형 다교차로 교통제어 데모)으로 전환했습니다. D-010은 superseded입니다.
+
+| 항목 | 내용 | 상태 |
+|---|---|---|
+| 구현 정본 | GitHub `sodam3156/Make-sejong-great-again` | 사실 |
+| 리서치·부스·발표 산출물 | vault `sodam3156/sejong-jiphyeonjeon` (백월 v2 인쇄용 PNG, 부스 체험 데모, 시연 스크립트, PPT 스토리라인 12장, D-day 타임라인) | 사실 |
+| 확정 카피 | "AI가 제안하고, 사람이 승인한다" / KPI "−23% 평균 교차로 대기시간 · 시뮬레이션 기준" | 결정 |
+| 이 저장소의 IDEA-002 정본 4종 | archived 이력으로 보존 | 결정 |
+| 이 저장소에 MSGA 문제·고객·PRD 정본을 재작성할지 | 미정 | 미정 |
+
+아래 D-010 절과 게이트 현황은 폐지 전 이력입니다.
+
+## (이력) 메인 아이디어 확정 — D-010
 
 `D-010`(2026-07-25, accepted)에서 제품 책임자(@sodam3156)가 Gate 2–4 정식 검증 완료 전에 `IDEA-002 돌봄 집현전`(SOL-002)을 메인 아이디어로 직접 확정했습니다. D-006(게이트·사람 결정 전 미선택)에 대한 명시적 예외이며, 근거는 아래와 같습니다.
 
@@ -100,12 +115,11 @@ selection_decision: D-010
 
 ## 바로 해야 할 일
 
-- [ ] 이슈 #3(48시간 행동 검증), 이슈 #4(공식 데이터 스파이크) 완료 — 마감 2026-07-27
-- [ ] 결과를 `validation.evidence-log`와 `governance.gate-log`에 반영해 waiver를 `passed`로 전환
-- [ ] `docs/01_problem/PROBLEM_DEFINITION.md`, `docs/02_customer/PRIMARY_CUSTOMER.md`, `docs/05_product/PRD.md`의 가설 내용을 실제 검증 결과로 갱신
-- [ ] SOL-002 실행카드의 확인 필드(공식 확인 가능/기관 확인/제공 금지 분류) 확정
-- [ ] PR #6을 main으로 재타겟하고 사람 검토 후 병합 (AI는 병합하지 않음)
-- [ ] 만료일(2026-08-11) 전 waiver 재검토 책임자 지정
+- [ ] 팀 입력 확정(~8/5, 병목): 팀명 · 팀원 R&R · BM · 실측 KPI · 실제 QR 착지 페이지
+- [ ] 백월 인쇄 발주 (8/12까지 권장, 발주 전 교체 3건: QR·실측 KPI·팀명)
+- [ ] 8/10 드래프트·자료 제출, 8/16 발표자료 제출, 8/17 최종행사
+- [ ] 이 저장소에 MSGA 문제·고객·PRD 정본을 재작성할지 사람 결정
+- [ ] (이력 정리) IDEA-002 관련 이슈 #3·#4·#5, PR #6 종결 처리
 
 ## 사람 책임과 시한
 

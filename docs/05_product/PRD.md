@@ -1,16 +1,18 @@
 ---
 document_id: product.prd
-status: active
+status: archived
 owner_role: product-owner
-last_updated: 2026-07-25
+last_updated: 2026-07-29
 candidate_id: IDEA-002
-selection_status: selected
+selection_status: archived
 selection_decision: D-010
 solution_id: SOL-002
 implementation_status: planned
 ---
 
 # 제품 요구사항 문서 — 돌봄 집현전 (SOL-002)
+> **D-011(2026-07-29)로 IDEA-002 돌봄 집현전이 폐지되어 이 문서는 archived 이력입니다.** 현재 메인은 Make Sejong Great Again(`sodam3156/Make-sejong-great-again`)입니다.
+
 
 > `D-010`(2026-07-25, accepted)으로 선택됐습니다. Gate 2–4 정식 검증(이슈 #3·#4)은 waived 상태이며, 완료 전까지 아래 요구사항은 잠정입니다. 상세 근거·계약은 `planning.solution-brief`(SOL-002)를 정본으로 참조합니다.
 

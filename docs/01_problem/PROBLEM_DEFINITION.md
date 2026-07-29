@@ -1,15 +1,17 @@
 ---
 document_id: planning.problem-definition
-status: active
+status: archived
 owner_role: product-owner
-last_updated: 2026-07-25
+last_updated: 2026-07-29
 candidate_id: IDEA-002
-selection_status: selected
+selection_status: archived
 selection_decision: D-010
 problem_hypothesis_id: HYP-002
 ---
 
 # 문제 정의 — 돌봄 집현전 (IDEA-002)
+> **D-011(2026-07-29)로 IDEA-002 돌봄 집현전이 폐지되어 이 문서는 archived 이력입니다.** 현재 메인은 Make Sejong Great Again(`sodam3156/Make-sejong-great-again`)입니다.
+
 
 > `D-010`(2026-07-25, accepted)으로 선택됐습니다. Gate 2 정식 검증(이슈 #3)은 waived 상태이며, 아래 내용 중 `가설`로 표기된 항목은 아직 검증 결과가 아닙니다.
 
