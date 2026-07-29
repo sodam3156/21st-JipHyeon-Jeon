@@ -2,7 +2,7 @@
 document_id: planning.solution-portfolio
 status: active
 owner_role: product-owner
-last_updated: 2026-07-25
+last_updated: 2026-07-29
 ---
 
 # 솔루션 포트폴리오
@@ -20,13 +20,13 @@ last_updated: 2026-07-25
 
 ## 현재 후보
 
-`D-010`(2026-07-25, accepted)에서 제품 책임자가 `SOL-002`를 대표 솔루션으로 확정했습니다. Gate 4 정식 조건(같은 비교군 대비 Red Team, 동일 시간·정보·형식 비교)은 `governance.gate-log`에 `waived`(만료 2026-08-11)로 기록돼 있습니다.
+`D-011`(2026-07-29)로 `SOL-002`가 폐지됐습니다(D-010 superseded). 아래는 이력입니다. `D-010`(2026-07-25)에서 제품 책임자가 `SOL-002`를 대표 솔루션으로 확정했었습니다. Gate 4 정식 조건(같은 비교군 대비 Red Team, 동일 시간·정보·형식 비교)은 `governance.gate-log`에 `waived`(만료 2026-08-11)로 기록돼 있습니다.
 
 후보 상태는 `candidate`, `selected`, `rejected`, `parked` 중 하나를 사용합니다.
 
 | 솔루션 ID | 아이디어 ID | 기회 ID | 대표 사건 | 치명 공백 | Gate 4 | 후보 상태 | 검토자·일자 |
 |---|---|---|---|---|---|---|---|
-| SOL-002 | IDEA-002 | OPP-005 | 6–36개월 자녀의 갑작스러운 평일 2–4시간 돌봄 공백 | 이슈 #4 공식 데이터 스파이크 전 확인 필드 미확정, 실시간 예약·빈자리 미보장 | waived | selected | 제품책임자 @sodam3156 · 2026-07-25 |
+| SOL-002 | IDEA-002 | OPP-005 | 6–36개월 자녀의 갑작스러운 평일 2–4시간 돌봄 공백 | 이슈 #4 공식 데이터 스파이크 전 확인 필드 미확정, 실시간 예약·빈자리 미보장 | waived | rejected | 제품책임자 @sodam3156 · 2026-07-29 (D-011 폐지) |
 
 `SOL-001`은 Gate 도입 전에 IDEA-001을 구체화했던 archived 기록이므로 현재 비교표에 넣지 않습니다.
 

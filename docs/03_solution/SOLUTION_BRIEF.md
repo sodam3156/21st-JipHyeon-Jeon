@@ -1,16 +1,18 @@
 ---
 document_id: planning.solution-brief
-status: active
+status: archived
 owner_role: product-owner
-last_updated: 2026-07-25
+last_updated: 2026-07-29
 candidate_id: IDEA-002
-selection_status: selected
+selection_status: archived
 selection_decision: D-010
 solution_id: SOL-002
 implementation_status: planned
 ---
 
 # 솔루션 개요 — 돌봄 집현전 (SOL-002)
+> **D-011(2026-07-29)로 IDEA-002 돌봄 집현전이 폐지되어 이 문서는 archived 이력입니다.** 현재 메인은 Make Sejong Great Again(`sodam3156/Make-sejong-great-again`)입니다.
+
 
 > `D-010`(2026-07-25, accepted)으로 선택됐습니다. Gate 4 정식 조건은 `governance.gate-log`에 `waived`(만료 2026-08-11)로 기록돼 있으며, 이슈 #4 결과로 확인 필드를 확정할 때까지 아래 계약은 잠정입니다. IDEA-001/SOL-001의 이전 기록은 Git 이력으로만 보존됩니다.
 

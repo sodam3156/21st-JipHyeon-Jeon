@@ -19,16 +19,16 @@ AI와 팀원은 파일명이 아니라 문서 ID를 기준으로 정본을 찾�
 | planning.current-status | docs/00_overview/CURRENT_STATUS.md | 확정·가설·미정·게이트 현황 | active |
 | planning.insight-ledger | docs/00_overview/INSIGHT_LEDGER.md | 아이디어 전 설계 인사이트 정본 | active |
 | planning.opportunity-map | docs/00_overview/OPPORTUNITY_MAP.md | 문제 원형과 기회 영역 비교 | active |
-| planning.problem-definition | docs/01_problem/PROBLEM_DEFINITION.md | D-010으로 선택된 IDEA-002 문제 정본 | active |
-| planning.primary-customer | docs/02_customer/PRIMARY_CUSTOMER.md | D-010으로 선택된 IDEA-002 고객 정본 | active |
+| planning.problem-definition | docs/01_problem/PROBLEM_DEFINITION.md | D-011로 폐지된 IDEA-002 문제 정본 (이력) | archived |
+| planning.primary-customer | docs/02_customer/PRIMARY_CUSTOMER.md | D-011로 폐지된 IDEA-002 고객 정본 (이력) | archived |
 | planning.idea-portfolio | docs/03_solution/IDEA_PORTFOLIO.md | 아이디어 후보와 선택 게이트 | active |
 | planning.solution-portfolio | docs/03_solution/SOLUTION_PORTFOLIO.md | 비교 후보별 최소 솔루션과 Gate 4 정본 | active |
-| planning.solution-brief | docs/03_solution/SOLUTION_BRIEF.md | D-010으로 선택된 SOL-002 솔루션 정본 | active |
+| planning.solution-brief | docs/03_solution/SOLUTION_BRIEF.md | D-011로 폐지된 SOL-002 솔루션 정본 (이력) | archived |
 | validation.research-source-catalog | docs/04_validation/RESEARCH_SOURCE_CATALOG.md | 조사 원천·용도·한계 | active |
 | validation.source-snapshot-manifest | docs/04_validation/SOURCE_SNAPSHOT_MANIFEST.md | 외부 조사 원본의 파일 식별자·해시 | active |
 | validation.evidence-log | docs/04_validation/EVIDENCE_LOG.md | 고객·문제·솔루션 근거와 반증 | active |
 | validation.opp005-user-demand-research | docs/04_validation/OPP_005_USER_DEMAND_RESEARCH.md | OPP-005 주요 사용자·규모·공식 수요·공개 행동사례·기능 우선순위·검증계획 통합 조사 | active |
-| product.prd | docs/05_product/PRD.md | D-010으로 선택된 SOL-002 구현 정본 | active |
+| product.prd | docs/05_product/PRD.md | D-011로 폐지된 SOL-002 구현 정본 (이력) | archived |
 | delivery.hackathon-plan | docs/06_delivery/HACKATHON_PLAN.md | 일정·게이트·데모·발표 계획 | active |
 | governance.decision-log | docs/07_decisions/DECISION_LOG.md | 결정과 변경 이유 | active |
 | governance.approval-log | docs/07_decisions/APPROVAL_LOG.md | 인간 승인 요청·결과·범위 정본 | active |
